@@ -126,9 +126,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "
+" If in diff mode, bail
+" 
+if &diff
+  finish
+endif
+
+"
 " Called on VimEnter event
 "
-
 let w:buftabs_enabled = 0
 let w:original_statusline = matchstr(&statusline, "%=.*")
 
@@ -136,11 +142,9 @@ function! Buftabs_enable()
 	let w:buftabs_enabled = 1
 endfunction
 
-
 "
 " Persistent echo to avoid overwriting of status line when 'hidden' is enabled
 " 
-
 function! Pecho(msg)
 	let s:hold_ut=&ut|let &ut=1
 	let s:Pecho=a:msg
@@ -151,11 +155,9 @@ function! Pecho(msg)
 	aug END
 endf
 
-
 "
 " Draw the buftabs
 "
-
 function! Buftabs_show(deleted_buf)
 
 	let l:i = 1
@@ -171,16 +173,13 @@ function! Buftabs_show(deleted_buf)
 	endif
 
 	" Walk the list of buffers
-
 	while(l:i <= bufnr('$'))
 
 		" Only show buffers in the list, and omit help screens
-	
 		if buflisted(l:i) && getbufvar(l:i, "&modifiable") && a:deleted_buf != l:i
 
 			" Get the name of the current buffer, and escape characters that might
 			" mess up the statusline
-
 			if exists("g:buftabs_only_basename")
 				let l:name = fnamemodify(bufname(l:i), ":t")
 			else
@@ -192,7 +191,6 @@ function! Buftabs_show(deleted_buf)
 			" is the active buffer, enclose it in some magick characters which will
 			" be replaced by markers later. If it is modified, it is appended with
 			" an exclaimation mark
-
 			if winbufnr(winnr()) == l:i
 				let l:start = strlen(l:list)
 				let l:list = l:list . "\x01"
@@ -223,7 +221,6 @@ function! Buftabs_show(deleted_buf)
 
 	" If the resulting list is too long to fit on the screen, chop
 	" out the appropriate part
-
 	let l:width = winwidth(0) - 12
 
 	if(l:start < w:from) 
@@ -238,7 +235,6 @@ function! Buftabs_show(deleted_buf)
 	" Replace the magic characters by visible markers for highlighting the
 	" current buffer. The markers can be simple characters like square brackets,
 	" but can also be special codes with highlight groups
-
 	let l:buftabs_marker_start = "["
   if exists("g:buftabs_marker_start")
     let l:buftabs_marker_start = g:buftabs_marker_start
@@ -270,7 +266,6 @@ function! Buftabs_show(deleted_buf)
 	" Show the list. The buftabs_in_statusline variable determines of the list
 	" is displayed in the command line (volatile) or in the statusline
 	" (persistent)
-
 	if exists("g:buftabs_in_statusline")
 		let &l:statusline = l:list . w:original_statusline
 	else
@@ -283,7 +278,6 @@ endfunction
 
 " Hook to events to show buftabs at startup, when creating and when switching
 " buffers
-
 autocmd VimEnter * call Buftabs_enable()
 autocmd VimEnter,BufNew,BufEnter,BufWritePost * call Buftabs_show(-1)
 autocmd BufDelete * call Buftabs_show(expand('<abuf>'))
@@ -292,4 +286,3 @@ if version >= 700
 end
 
 " vi: ts=2 sw=2
-
