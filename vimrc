@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-02-26 10:24
+" MODIFIED: 2010-03-02 08:18
 
 let g:work=0
 
@@ -25,7 +25,6 @@ set autowrite       " Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
 set splitright      " Split windows where I expect them
 set autoindent      " Copy indent from previous line
-set smartindent     " And try to be smart about it
 
 " Uber cool status line
 set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
