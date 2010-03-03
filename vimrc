@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-03-02 08:18
+" MODIFIED: 2010-03-02 22:14
 
 let g:work=0
 
@@ -237,9 +237,16 @@ endfunction
 "}}}
 
 " Plugin Settings {{{
+" Markdown syntax plugin
+set runtimepath+=~/.vim/plugin-git/markdown/
+
+" DelimitMate
+set runtimepath+=~/.vim/plugin-git/delimitmate/
 let g:delimitMate_expand_cr = "\<CR>\<CR>\<UP>\<C-O>$"
 let g:delimitMate_autoclose = 0
 
+" Tag List
+set runtimepath+=~/.vim/plugin-git/taglist/
 let g:Tlist_GainFocus_On_ToggleOpen = 1
 let g:Tlist_Show_Menu = 0
 let g:Tlist_Sort_Type = 'order'
@@ -248,19 +255,23 @@ let g:Tlist_Inc_Winwidth = 0
 let g:Tlist_Exit_OnlyWindow = 1
 let g:Tlist_Enable_Fold_Column = 0
 
+" NERD Tree
+set runtimepath+=~/.vim/plugin-git/nerdtree/
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeHighlightCursorline = 0
 
-let g:miniBufExplSplitToEdge = 0
-let g:miniBufExplSplitBelow = 1
-let g:miniBufExplModSelTarget = 1
-
+" SnipMate
+set runtimepath+=~/.vim/plugin-git/snipmate/
+set runtimepath+=~/.vim/plugin-git/snipmate/after/
 let g:snips_author = 'Randy Morris'
 let g:snips_email = 'randy@rsontech.net'
+let g:snippets_dir = '/home/randy/.vim/snippets'
 
+" Super Tab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabMidWordCompletion = 0
 
+" Buftabs
 let g:buftabs_in_statusline = 1
 let g:buftabs_only_basename = 1 
 let g:buftabs_marker_start = ''
