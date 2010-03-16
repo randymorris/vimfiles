@@ -3,9 +3,12 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-03-02 22:14
+" MODIFIED: 2010-03-16 10:15
 
-let g:work=0
+let g:work = 0
+if hostname() == 'vudu'
+    let g:work = 1
+endif
 
 " Simple Settings  {{{
 
@@ -127,7 +130,7 @@ let mapleader=',' " Change leader to something easier to reach
 vmap <Leader>c :call CommentLines()<CR>
 
 " Quickly save a file as root
-cmap w!! %!sudo tee > /dev/null %
+cabbr w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
 " Modify buffer display
 nmap <Leader>L :call ToggleNonText()<CR>
@@ -137,6 +140,7 @@ nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
 nmap <Leader>I :NERDTreeToggle<CR><C-w>l:TlistToggle<CR><C-w>h
 nmap <Leader>W :match todo /\%80v.\+/<CR>
 nmap <Leader>S :setlocal invspell<CR>
+nmap <Leader>O :SessionList<CR>
 
 " Buffer Mappings
 for i in range(1,9,1)
@@ -184,7 +188,7 @@ function! LastModified()
 endfunction
 
 " Toggle comments on a visual block
-function CommentLines()
+function! CommentLines()
     try
         execute ":s@^".g:StartComment." @\@g"
         execute ":s@ ".g:EndComment."$@@g"
@@ -236,7 +240,7 @@ endfunction
 
 "}}}
 
-" Plugin Settings {{{
+" Plugin Specific {{{
 " Markdown syntax plugin
 set runtimepath+=~/.vim/plugin-git/markdown/
 
