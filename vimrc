@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-03-16 10:15
+" MODIFIED: 2010-03-23 07:34
 
 let g:work = 0
 if hostname() == 'vudu'
@@ -47,11 +47,7 @@ endif
 set backspace=indent,eol,start
 
 " Make tabs easier to see with set list
-if has('unix')
-    set listchars=tab:\|-,trail:.,extends:»,precedes:«,eol:$ 
-elseif has('windows')
-    set listchars=tab:\|-,trail:.,extends:>,precedes:<,eol:$ 
-endif
+set listchars=tab:\|-,trail:.,extends:>,precedes:<,eol:$ 
 
 " Show only spaces, not ugly bars
 set fillchars=
