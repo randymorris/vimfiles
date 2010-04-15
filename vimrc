@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-03-23 07:34
+" MODIFIED: 2010-04-15 19:19
 
 let g:work = 0
 if hostname() == 'vudu'
@@ -105,10 +105,10 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.jinja set filetype=htmljinja
 
     " Set comment characters for common languages
-    autocmd FileType python,sh,bash,zsh,ruby,perl let StartComment="#" | let EndComment=""
+    autocmd FileType python,sh,bash,zsh,ruby,perl,muttrc let StartComment="#" | let EndComment=""
     autocmd FileType html let StartComment="<!--" | let EndComment="-->"
-    autocmd FileType php,c,javascript let StartComment="//" | let EndComment=""
-    autocmd FileType cpp,css let StartComment="/*" | let EndComment="*/"
+    autocmd FileType php,cpp,javascript let StartComment="//" | let EndComment=""
+    autocmd FileType c,css let StartComment="/*" | let EndComment="*/"
     autocmd FileType vim let StartComment="\"" | let EndComment=""
     autocmd FileType ini let StartComment=";" | let EndComment=""
 
@@ -120,6 +120,11 @@ endif
 "}}}
 
 " Key Maps  "{{{
+" Unmap annoying keys
+nnoremap q: <Nop>
+nnoremap q/ <Nop>
+nnoremap q? <Nop>
+
 let mapleader=',' " Change leader to something easier to reach
 
 " Comment conveniently
@@ -128,7 +133,7 @@ vmap <Leader>c :call CommentLines()<CR>
 " Quickly save a file as root
 cabbr w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
-" Modify buffer display
+" Modify display
 nmap <Leader>L :call ToggleNonText()<CR>
 nmap <Leader>N :setlocal invnumber<CR>
 nmap <Leader>T :TlistToggle<CR><C-w><C-w>
@@ -233,7 +238,6 @@ function! ToggleNonText()
     endif
     setlocal invlist
 endfunction
-
 "}}}
 
 " Plugin Specific {{{
