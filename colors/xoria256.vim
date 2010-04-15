@@ -58,7 +58,7 @@ hi TabLine      ctermfg=fg  guifg=fg      ctermbg=242 guibg=#666666 cterm=underl
 hi TabLineFill  ctermfg=fg  guifg=fg      ctermbg=242 guibg=#666666 cterm=underline gui=underline
 hi VertSplit    ctermfg=237 guifg=#3a3a3a ctermbg=237 guibg=#3a3a3a cterm=none gui=none
 hi Visual       ctermfg=24  guifg=#005f87 ctermbg=153 guibg=#afdfff
-hi VIsualNOS    ctermfg=24  guifg=#005f87 ctermbg=153 guibg=#afdfff cterm=none gui=none
+hi VisualNOS    ctermfg=24  guifg=#005f87 ctermbg=153 guibg=#afdfff cterm=none gui=none
 hi WildMenu     ctermfg=0   guifg=#000000 ctermbg=184 guibg=#dfdf00 cterm=bold gui=bold
 
 "" Syntax highlighting
