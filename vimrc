@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-04-15 19:19
+" MODIFIED: 2010-04-28 08:57
 
 let g:work = 0
 if hostname() == 'vudu'
@@ -28,6 +28,7 @@ set autowrite       " Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
 set splitright      " Split windows where I expect them
 set autoindent      " Copy indent from previous line
+set list            " Show non-printing characters by default
 
 " Uber cool status line
 set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
@@ -47,7 +48,7 @@ endif
 set backspace=indent,eol,start
 
 " Make tabs easier to see with set list
-set listchars=tab:\|-,trail:.,extends:>,precedes:<,eol:$ 
+set listchars=tab:+-,trail:·,extends:>,precedes:<,
 
 " Show only spaces, not ugly bars
 set fillchars=
@@ -134,7 +135,7 @@ vmap <Leader>c :call CommentLines()<CR>
 cabbr w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
 " Modify display
-nmap <Leader>L :call ToggleNonText()<CR>
+nmap <Leader>L :setlocal invlist<CR>
 nmap <Leader>N :setlocal invnumber<CR>
 nmap <Leader>T :TlistToggle<CR><C-w><C-w>
 nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
@@ -225,19 +226,6 @@ function! OpenFoldOnRestore()
     endif
 endfunction
 
-" Toggle NonText hiliting and set list
-execute "highlight NonText ctermfg=234"
-let g:NonTextHidden = 1
-function! ToggleNonText()
-    if g:NonTextHidden == 1
-        execute "highlight NonText ctermfg=248"
-        let g:NonTextHidden = 0
-    else
-        execute "highlight NonText ctermfg=234"
-        let g:NonTextHidden = 1
-    endif
-    setlocal invlist
-endfunction
 "}}}
 
 " Plugin Specific {{{
