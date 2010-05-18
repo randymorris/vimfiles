@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-04-28 08:57
+" MODIFIED: 2010-05-18 07:25
 
 let g:work = 0
 if hostname() == 'vudu'
@@ -48,7 +48,7 @@ endif
 set backspace=indent,eol,start
 
 " Make tabs easier to see with set list
-set listchars=tab:+-,trail:·,extends:>,precedes:<,
+set listchars=tab:>·,trail:·,extends:⋯,precedes:⋯,
 
 " Show only spaces, not ugly bars
 set fillchars=
@@ -84,6 +84,7 @@ if $TERM =~ "256color" || has('gui_running')
 else
     colorscheme darkdot
 endif
+
 "}}}
 
 " Auto Commands "{{{
@@ -150,7 +151,6 @@ for i in range(1,9,1)
     exec "silent! noremap <Leader>s".i." :sb! ".i."<CR>" 
     exec "silent! noremap <Leader>v".i." :vertical sb! ".i."<CR>" 
 endfor
-
 "}}}
 
 " Mouse Settings "{{{
