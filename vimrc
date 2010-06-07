@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-06-07 08:37
+" MODIFIED: 2010-06-07 09:21
 
 " Simple Settings  {{{
 
@@ -38,7 +38,7 @@ endif
 set backspace=indent,eol,start
 
 " Make tabs easier to see with set list
-set listchars=tab:>·,trail:·,extends:⋯,precedes:⋯,
+set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,
 
 " Show only spaces, not ugly bars
 set fillchars=
