@@ -3,16 +3,12 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-05-18 07:25
-
-let g:work = 0
-if hostname() == 'vudu'
-    let g:work = 1
-endif
+" MODIFIED: 2010-06-07 08:37
 
 " Simple Settings  {{{
 
 set nocompatible    " Don't be old and stupid
+set expandtab       " Don't be stupid about tabs
 set tabstop=4       " Small tab width
 set softtabstop=4   " Backspace fake tabs
 set shiftwidth=4    " Match tab width
@@ -36,12 +32,6 @@ set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %
 if v:version >= 700
     set numberwidth=1     " Keep number bar small if it's shown 
     set completeopt-=menu " Get rid of the ugly menu
-endif
-
-if g:work == 1
-    set noexpandtab " Don't tabs at work
-else
-    set expandtab   " Don't be stupid at home
 endif
 
 " Make backspace act normal
@@ -83,6 +73,10 @@ if $TERM =~ "256color" || has('gui_running')
     colorscheme xoria256
 else
     colorscheme darkdot
+endif
+
+if hostname() == 'vudu'
+    source ~/.vimrc.work
 endif
 
 "}}}
