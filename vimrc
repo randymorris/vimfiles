@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-06-07 09:21
+" MODIFIED: 2010-06-28 11:03
 
 " Simple Settings  {{{
 
@@ -223,6 +223,9 @@ endfunction
 "}}}
 
 " Plugin Specific {{{
+" Indent-Object plugin
+set runtimepath+=~/.vim/plugin-git/indent_object/
+
 " Markdown syntax plugin
 set runtimepath+=~/.vim/plugin-git/markdown/
 
