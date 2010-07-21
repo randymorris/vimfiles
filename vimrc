@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-06-28 11:03
+" MODIFIED: 2010-07-21 13:21
 
 " Simple Settings  {{{
 
@@ -269,5 +269,10 @@ let g:buftabs_separator = ' '
 let g:buftabs_active_highlight_group = "StatusLine"
 let g:buftabs_inactive_highlight_group = "InactiveBuf"
 highlight InactiveBuf cterm=bold ctermfg=247 ctermbg=239
+
+" Conque
+set runtimepath+=~/.vim/plugin-git/conque/
+autocmd filetype conque_term setlocal nolist
+let g:ConqueTerm_CWInsert = 1
 
 " vim:foldlevel=0:foldmethod=marker
