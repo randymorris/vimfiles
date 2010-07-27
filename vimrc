@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-07-27 12:41
+" MODIFIED: 2010-07-27 12:44
 
 " Simple Settings  {{{
 
@@ -227,6 +227,9 @@ endfunction
 "}}}
 
 " Plugin Specific {{{
+" Supertab
+set runtimepath+=~/.vim/plugin-git/supertab/
+
 " Indent-Object plugin
 set runtimepath+=~/.vim/plugin-git/indent_object/
 
