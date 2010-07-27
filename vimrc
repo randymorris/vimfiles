@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-07-21 13:21
+" MODIFIED: 2010-07-27 12:41
 
 " Simple Settings  {{{
 
@@ -136,15 +136,19 @@ nmap <Leader>T :TlistToggle<CR><C-w><C-w>
 nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
 nmap <Leader>I :NERDTreeToggle<CR><C-w>l:TlistToggle<CR><C-w>h
 nmap <Leader>W :match todo /\%80v.\+/<CR>
-nmap <Leader>S :setlocal invspell<CR>
 nmap <Leader>O :SessionList<CR>
 
 " Buffer Mappings
 for i in range(1,9,1)
-    exec "silent! noremap <Leader>".i." :b! ".i."<CR>" 
-    exec "silent! noremap <Leader>s".i." :sb! ".i."<CR>" 
-    exec "silent! noremap <Leader>v".i." :vertical sb! ".i."<CR>" 
+    exec "silent! noremap <Esc>".i." :b! ".i."<CR>" 
+    exec "silent! noremap <Esc>s".i." :sb! ".i."<CR>" 
+    exec "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>" 
 endfor
+
+" Conque Specific Mappings
+nmap <Leader>S :ConqueTerm zsh<CR>
+nmap <Leader>s :ConqueTermSplit zsh<CR>
+nmap <Leader>v :ConqueTermVSplit zsh<CR>
 "}}}
 
 " Mouse Settings "{{{
