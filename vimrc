@@ -105,6 +105,10 @@ if has('autocmd')
     autocmd BufReadPost * call RestoreCursorPos()
     autocmd BufWinEnter * call OpenFoldOnRestore()
 
+    " Never hide any text
+    if has('conceal')
+        autocmd Filetype * set conceallevel=0
+    endif
 endif
 "}}}
 
