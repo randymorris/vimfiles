@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-07-28 09:43
+" MODIFIED: 2010-07-28 12:34
 
 " Simple Settings  {{{
 
@@ -85,13 +85,6 @@ endif
 if has('autocmd')
     " Set mutt settings
     autocmd BufRead,BufNewFile /tmp/mutt-* set filetype=mail | set textwidth=72 | set spell | set wrap
-
-    " Enable template files
-    if has('unix')
-        autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl 
-    elseif has('windows')
-        autocmd BufNewFile * silent! 0r $HOME/vimfiles/templates/%:e.tpl 
-    endif
 
     " Automatically add CREATED date and update MODIFIED date
     autocmd BufNewFile * call Created()
