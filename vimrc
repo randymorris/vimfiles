@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-07-27 12:44
+" MODIFIED: 2010-07-28 08:36
 
 " Simple Settings  {{{
 
@@ -238,7 +238,7 @@ set runtimepath+=~/.vim/plugin-git/markdown/
 
 " DelimitMate
 set runtimepath+=~/.vim/plugin-git/delimitmate/
-let g:delimitMate_expand_cr = "\<CR>\<CR>\<UP>\<C-O>$"
+let g:delimitMate_expand_cr = 1
 let g:delimitMate_autoclose = 0
 
 " Tag List
