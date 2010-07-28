@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-07-28 08:36
+" MODIFIED: 2010-07-28 09:43
 
 " Simple Settings  {{{
 
@@ -58,7 +58,7 @@ endif
 
 if has('gui')
     set guioptions=
-    set guifont=Monaco:h10
+    set guifont=Monaco
 endif
 
 " Open help in a vsplit rather than a split
