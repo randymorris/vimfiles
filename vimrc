@@ -3,45 +3,51 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-07-28 12:34
+" MODIFIED: 2010-08-31 08:25
 
 " Simple Settings  {{{
 
-set nocompatible    " Don't be old and stupid
-set expandtab       " Don't be stupid about tabs
-set tabstop=4       " Small tab width
-set softtabstop=4   " Backspace fake tabs
-set shiftwidth=4    " Match tab width
-set smarttab        " Tabs at the beginning of lines, spaces everywhere else
-set nowrap          " Do not wrap lines
-set ruler           " Always show a ruler
+set nocompatible    " Enable vim features
+
+" Allow backspace to remove indents, newlines and old text
+set backspace=indent,eol,start
+
+" Tab options
+set expandtab       " Use spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smarttab        " Indent using shiftwidth
+set autoindent      " Copy indent from previous line
+
+" Display options
+set nowrap          " Do not wrap lines by default
+set ruler           " Always show cursor position
 set laststatus=2    " Always show the status line
-set novisualbell    " Shut the hell up
+set novisualbell    " Don't flash the screen
+set list            " Show non-printing characters by default
+set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,
+set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+" Show only spaces, not ugly bars
+set fillchars=
+
+" Matching characters
 set showmatch       " Show matching brackets
 set matchpairs+=<:> " Make < and > match as well
 set matchtime=3     " Show matching brackets for only 0.3 seconds
+
+" Buffer options
 set autowrite       " Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
-set splitright      " Split windows where I expect them
-set autoindent      " Copy indent from previous line
-set list            " Show non-printing characters by default
 
-" Uber cool status line
-set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+" Split options
+set splitright
+set nosplitbelow
 
 if v:version >= 700
-    set numberwidth=1     " Keep number bar small if it's shown 
+    set numberwidth=1     " Keep line numbers small if it's shown
     set completeopt-=menu " Get rid of the ugly menu
 endif
-
-" Make backspace act normal
-set backspace=indent,eol,start
-
-" Make tabs easier to see with set list
-set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,
-
-" Show only spaces, not ugly bars
-set fillchars=
 
 filetype plugin on " Enable filetype detection
 syntax on          " Syntax highliting
@@ -49,11 +55,11 @@ syntax on          " Syntax highliting
 if has('folding')
     set foldenable         " Enable code folding
     set foldmethod=marker  " Fold on marker
-    set foldopen-=search   " Do not open folds when searching
-    set foldopen-=undo     " Do not open folds when undo'ing changes
-    set foldlevel=999      " High default so folds are shown to start
     set foldmarker={{{,}}} " Keep foldmarkers default
-    set foldcolumn=0       " Don't waste screen space
+    set foldopen-=search   " Do not open folds when searching
+    set foldopen-=undo     " Do not open folds when undoing changes
+    set foldlevel=999      " High default so folds are shown to start
+    set foldcolumn=0       " Don't show a fold column
 endif
 
 if has('gui')
@@ -63,10 +69,11 @@ endif
 
 " Open help in a vsplit rather than a split
 command! -nargs=? -complete=help Help :vertical help <args>
+cabbr h Help
 "}}}
 
 " Color Settings "{{{
-set background=dark " Dark backgrounds == win
+set background=dark
 
 " Set 256 color colorscheme if we can
 if $TERM =~ "256color" || has('gui_running')
@@ -101,14 +108,9 @@ if has('autocmd')
     autocmd FileType vim let StartComment="\"" | let EndComment=""
     autocmd FileType ini let StartComment=";" | let EndComment=""
 
-    " Go back where I left off
+    " Restore cursor position
     autocmd BufReadPost * call RestoreCursorPos()
     autocmd BufWinEnter * call OpenFoldOnRestore()
-
-    " Never hide any text
-    if has('conceal')
-        autocmd Filetype * set conceallevel=0
-    endif
 endif
 "}}}
 
@@ -129,23 +131,14 @@ cabbr w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 " Modify display
 nmap <Leader>L :setlocal invlist<CR>
 nmap <Leader>N :setlocal invnumber<CR>
-nmap <Leader>T :TlistToggle<CR><C-w><C-w>
-nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
-nmap <Leader>I :NERDTreeToggle<CR><C-w>l:TlistToggle<CR><C-w>h
 nmap <Leader>W :match todo /\%80v.\+/<CR>
-nmap <Leader>O :SessionList<CR>
 
 " Buffer Mappings
 for i in range(1,9,1)
-    exec "silent! noremap <Esc>".i." :b! ".i."<CR>" 
-    exec "silent! noremap <Esc>s".i." :sb! ".i."<CR>" 
-    exec "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>" 
+    exec "silent! noremap <Esc>".i." :b! ".i."<CR>"
+    exec "silent! noremap <Esc>s".i." :sb! ".i."<CR>"
+    exec "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>"
 endfor
-
-" Conque Specific Mappings
-nmap <Leader>S :ConqueTerm zsh<CR>
-nmap <Leader>s :ConqueTermSplit zsh<CR>
-nmap <Leader>v :ConqueTermVSplit zsh<CR>
 "}}}
 
 " Mouse Settings "{{{
@@ -165,7 +158,7 @@ endif
 "}}}
 
 " Functions "{{{
-" Auto update create date  
+" Auto update create date
 function! Created()
     normal msHmS
     let n = min([20, line("$")])
@@ -195,29 +188,29 @@ function! CommentLines()
     endtry
 endfunction
 
-" Restore my cursor position
+" Restore cursor position
 function! RestoreCursorPos()
-    if expand("<afile>:p:h") !=? $TEMP 
-        if line("'\"") > 1 && line("'\"") <= line("$") 
-            let line_num = line("'\"") 
-            let b:doopenfold = 1 
-            if (foldlevel(line_num) > foldlevel(line_num - 1)) 
-                let line_num = line_num - 1 
-                let b:doopenfold = 2 
-            endif 
-            execute line_num 
-        endif 
+    if expand("<afile>:p:h") !=? $TEMP
+        if line("'\"") > 1 && line("'\"") <= line("$")
+            let line_num = line("'\"")
+            let b:doopenfold = 1
+            if (foldlevel(line_num) > foldlevel(line_num - 1))
+                let line_num = line_num - 1
+                let b:doopenfold = 2
+            endif
+            execute line_num
+        endif
     endif
 endfunction
 
 " Open the fold if restoring cursor position
 function! OpenFoldOnRestore()
-    if exists("b:doopenfold") 
+    if exists("b:doopenfold")
         execute "normal zv"
         if(b:doopenfold > 1)
             execute "+".1
         endif
-        unlet b:doopenfold 
+        unlet b:doopenfold
     endif
 endfunction
 
@@ -248,10 +241,14 @@ let g:Tlist_Inc_Winwidth = 0
 let g:Tlist_Exit_OnlyWindow = 1
 let g:Tlist_Enable_Fold_Column = 0
 
+nmap <Leader>T :TlistToggle<CR><C-w><C-w>
+
 " NERD Tree
 set runtimepath+=~/.vim/plugin-git/nerdtree/
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeHighlightCursorline = 0
+
+nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
 
 " SnipMate
 set runtimepath+=~/.vim/plugin-git/snipmate/
@@ -264,19 +261,13 @@ let g:snippets_dir = '/home/randy/.vim/snippets'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabMidWordCompletion = 0
 
-" Buftabs
-let g:buftabs_in_statusline = 1
-let g:buftabs_only_basename = 1 
-let g:buftabs_marker_start = ''
-let g:buftabs_marker_end = ''
-let g:buftabs_separator = ' '
-let g:buftabs_active_highlight_group = "StatusLine"
-let g:buftabs_inactive_highlight_group = "InactiveBuf"
-highlight InactiveBuf cterm=bold ctermfg=247 ctermbg=239
-
 " Conque
 set runtimepath+=~/.vim/plugin-git/conque/
 autocmd filetype conque_term setlocal nolist
 let g:ConqueTerm_CWInsert = 1
+
+nmap <Leader>S :ConqueTerm zsh<CR>
+nmap <Leader>s :ConqueTermSplit zsh<CR>
+nmap <Leader>v :ConqueTermVSplit zsh<CR>
 
 " vim:foldlevel=0:foldmethod=marker
