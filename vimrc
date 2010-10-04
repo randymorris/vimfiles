@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-08-31 08:25
+" MODIFIED: 2010-09-08 12:06
 
 " Simple Settings  {{{
 
@@ -119,6 +119,7 @@ endif
 nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
+inoremap {}<CR> {<CR>}<C-o>O<TAB>
 
 let mapleader=',' " Change leader to something easier to reach
 
