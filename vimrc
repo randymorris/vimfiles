@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-09-08 12:06
+" MODIFIED: 2010-10-05 09:33
 
 " Simple Settings  {{{
 
@@ -94,8 +94,10 @@ if has('autocmd')
     autocmd BufRead,BufNewFile /tmp/mutt-* set filetype=mail | set textwidth=72 | set spell | set wrap
 
     " Automatically add CREATED date and update MODIFIED date
-    autocmd BufNewFile * call Created()
-    autocmd BufWrite * call LastModified()
+    if v:version >= 700
+        autocmd BufNewFile * call Created()
+        autocmd BufWrite * call LastModified()
+    endif
 
     " Explicitly set filetype on certain files
     autocmd BufRead,BufNewFile *.jinja set filetype=htmljinja
@@ -135,11 +137,13 @@ nmap <Leader>N :setlocal invnumber<CR>
 nmap <Leader>W :match todo /\%80v.\+/<CR>
 
 " Buffer Mappings
-for i in range(1,9,1)
-    exec "silent! noremap <Esc>".i." :b! ".i."<CR>"
-    exec "silent! noremap <Esc>s".i." :sb! ".i."<CR>"
-    exec "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>"
-endfor
+if v:version >= 700
+    for i in range(1,9,1)
+        exec "silent! noremap <Esc>".i." :b! ".i."<CR>"
+        exec "silent! noremap <Esc>s".i." :sb! ".i."<CR>"
+        exec "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>"
+    endfor
+endif
 "}}}
 
 " Mouse Settings "{{{
@@ -160,23 +164,25 @@ endif
 
 " Functions "{{{
 " Auto update create date
-function! Created()
-    normal msHmS
-    let n = min([20, line("$")])
-    execute '1,' . n . 's#^\(.\{,10}CREATED:  \).*#\1' . strftime('%Y-%m-%d %H:%M') . '#e'
-    normal `Szt`s
-    call LastModified()
-endfunction
-
-" Auto update last modified date
-function! LastModified()
-    if &modified
+if v:version >= 700
+    function! Created()
         normal msHmS
         let n = min([20, line("$")])
-        execute '1,' . n . 's#^\(.\{,10}MODIFIED: \).*#\1' . strftime('%Y-%m-%d %H:%M') . '#e'
+        execute '1,' . n . 's#^\(.\{,10}CREATED:  \).*#\1' . strftime('%Y-%m-%d %H:%M') . '#e'
         normal `Szt`s
-    endif
-endfunction
+        call LastModified()
+    endfunction
+
+    " Auto update last modified date
+    function! LastModified()
+        if &modified
+            normal msHmS
+            let n = min([20, line("$")])
+            execute '1,' . n . 's#^\(.\{,10}MODIFIED: \).*#\1' . strftime('%Y-%m-%d %H:%M') . '#e'
+            normal `Szt`s
+        endif
+    endfunction
+endif
 
 " Toggle comments on a visual block
 function! CommentLines()
@@ -218,57 +224,60 @@ endfunction
 "}}}
 
 " Plugin Specific {{{
-" Supertab
-set runtimepath+=~/.vim/plugin-git/supertab/
-
-" Indent-Object plugin
-set runtimepath+=~/.vim/plugin-git/indent_object/
 
 " Markdown syntax plugin
 set runtimepath+=~/.vim/plugin-git/markdown/
 
-" DelimitMate
-set runtimepath+=~/.vim/plugin-git/delimitmate/
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_autoclose = 0
+if v:version >= 600
+    " Tag List
+    set runtimepath+=~/.vim/plugin-git/taglist/
+    let g:Tlist_GainFocus_On_ToggleOpen = 1
+    let g:Tlist_Show_Menu = 0
+    let g:Tlist_Sort_Type = 'order'
+    let g:Tlist_Use_Right_Window = 1
+    let g:Tlist_Inc_Winwidth = 0
+    let g:Tlist_Exit_OnlyWindow = 1
+    let g:Tlist_Enable_Fold_Column = 0
+    nmap <Leader>T :TlistToggle<CR><C-w><C-w>
+endif
 
-" Tag List
-set runtimepath+=~/.vim/plugin-git/taglist/
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-let g:Tlist_Show_Menu = 0
-let g:Tlist_Sort_Type = 'order'
-let g:Tlist_Use_Right_Window = 1
-let g:Tlist_Inc_Winwidth = 0
-let g:Tlist_Exit_OnlyWindow = 1
-let g:Tlist_Enable_Fold_Column = 0
+if v:version >= 700
+    " Indent-Object plugin
+    set runtimepath+=~/.vim/plugin-git/indent_object/
 
-nmap <Leader>T :TlistToggle<CR><C-w><C-w>
+    " NERD Tree
+    set runtimepath+=~/.vim/plugin-git/nerdtree/
+    let g:NERDTreeChDirMode = 2
+    let g:NERDTreeHighlightCursorline = 0
+    nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
 
-" NERD Tree
-set runtimepath+=~/.vim/plugin-git/nerdtree/
-let g:NERDTreeChDirMode = 2
-let g:NERDTreeHighlightCursorline = 0
+    " SnipMate
+    set runtimepath+=~/.vim/plugin-git/snipmate/
+    set runtimepath+=~/.vim/plugin-git/snipmate/after/
+    let g:snips_author = 'Randy Morris'
+    let g:snips_email = 'randy@rsontech.net'
+    let g:snippets_dir = '.vim/snippets'
 
-nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
+    " Super Tab
+    set runtimepath+=~/.vim/plugin-git/supertab/
+    let g:SuperTabDefaultCompletionType = "context"
+    let g:SuperTabMidWordCompletion = 0
 
-" SnipMate
-set runtimepath+=~/.vim/plugin-git/snipmate/
-set runtimepath+=~/.vim/plugin-git/snipmate/after/
-let g:snips_author = 'Randy Morris'
-let g:snips_email = 'randy@rsontech.net'
-let g:snippets_dir = '/home/randy/.vim/snippets'
+    " Conque
+    if has('python')
+        set runtimepath+=~/.vim/plugin-git/conque/
+        autocmd filetype conque_term setlocal nolist
+        let g:ConqueTerm_CWInsert = 1
 
-" Super Tab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabMidWordCompletion = 0
+        nmap <Leader>S :ConqueTerm zsh<CR>
+        nmap <Leader>s :ConqueTermSplit zsh<CR>
+        nmap <Leader>v :ConqueTermVSplit zsh<CR>
+    endif
 
-" Conque
-set runtimepath+=~/.vim/plugin-git/conque/
-autocmd filetype conque_term setlocal nolist
-let g:ConqueTerm_CWInsert = 1
-
-nmap <Leader>S :ConqueTerm zsh<CR>
-nmap <Leader>s :ConqueTermSplit zsh<CR>
-nmap <Leader>v :ConqueTermVSplit zsh<CR>
+    " DelimitMate
+    set runtimepath+=~/.vim/plugin-git/delimitmate/
+    let g:delimitMate_expand_cr = 1
+    let g:delimitMate_autoclose = 0
+endif
 
 " vim:foldlevel=0:foldmethod=marker
