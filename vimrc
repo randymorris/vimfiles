@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-06 10:31
+" MODIFIED: 2010-10-06 12:37
 
 " Simple Settings  {{{
 
@@ -237,7 +237,7 @@ if v:version >= 700
     let NERDCreateDefaultMappings = 0
     let NERDCommentWholeLinesInVMode = 1
     let NERDSpaceDelims = 1
-    map <C-c> <plug>NERDCommenterToggle
+    map <Leader>c <plug>NERDCommenterToggle
 
     " SnipMate
     set runtimepath+=~/.vim/plugin-git/snipmate/
