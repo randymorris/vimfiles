@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-05 09:33
+" MODIFIED: 2010-10-06 10:31
 
 " Simple Settings  {{{
 
@@ -102,14 +102,6 @@ if has('autocmd')
     " Explicitly set filetype on certain files
     autocmd BufRead,BufNewFile *.jinja set filetype=htmljinja
 
-    " Set comment characters for common languages
-    autocmd FileType python,sh,bash,zsh,ruby,perl,muttrc let StartComment="#" | let EndComment=""
-    autocmd FileType html let StartComment="<!--" | let EndComment="-->"
-    autocmd FileType php,cpp,javascript let StartComment="//" | let EndComment=""
-    autocmd FileType c,css let StartComment="/*" | let EndComment="*/"
-    autocmd FileType vim let StartComment="\"" | let EndComment=""
-    autocmd FileType ini let StartComment=";" | let EndComment=""
-
     " Restore cursor position
     autocmd BufReadPost * call RestoreCursorPos()
     autocmd BufWinEnter * call OpenFoldOnRestore()
@@ -184,17 +176,6 @@ if v:version >= 700
     endfunction
 endif
 
-" Toggle comments on a visual block
-function! CommentLines()
-    try
-        execute ":s@^".g:StartComment." @\@g"
-        execute ":s@ ".g:EndComment."$@@g"
-    catch
-        execute ":s@^@".g:StartComment." @g"
-        execute ":s@$@ ".g:EndComment."@g"
-    endtry
-endfunction
-
 " Restore cursor position
 function! RestoreCursorPos()
     if expand("<afile>:p:h") !=? $TEMP
@@ -250,6 +231,13 @@ if v:version >= 700
     let g:NERDTreeChDirMode = 2
     let g:NERDTreeHighlightCursorline = 0
     nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
+
+    " NERD Commenter
+    set runtimepath+=~/.vim/plugin-git/nerdcommenter/
+    let NERDCreateDefaultMappings = 0
+    let NERDCommentWholeLinesInVMode = 1
+    let NERDSpaceDelims = 1
+    map <C-c> <plug>NERDCommenterToggle
 
     " SnipMate
     set runtimepath+=~/.vim/plugin-git/snipmate/
