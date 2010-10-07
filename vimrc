@@ -3,7 +3,17 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-06 12:37
+" MODIFIED: 2010-10-07 10:16
+
+" Setup pathogen "{{{
+try
+    " syntax is only supported by vim >= 700
+    call pathogen#runtime_append_all_bundles('plugin-git')
+    filetype off
+catch /^Vim\%((\a\+)\)\=:E107/
+    " manually load plugins for vim < 700 later
+endtry
+"}}}
 
 " Simple Settings  {{{
 
@@ -206,12 +216,13 @@ endfunction
 
 " Plugin Specific {{{
 
-" Markdown syntax plugin
-set runtimepath+=~/.vim/plugin-git/markdown/
-
 if v:version >= 600
     " Tag List
-    set runtimepath+=~/.vim/plugin-git/taglist/
+    if v:version < 700
+        " pathogen doesn't work with vim 6 but taglist does
+        set rtp+=~/.vim/plugin-git/taglist
+    endif
+
     let g:Tlist_GainFocus_On_ToggleOpen = 1
     let g:Tlist_Show_Menu = 0
     let g:Tlist_Sort_Type = 'order'
@@ -223,37 +234,28 @@ if v:version >= 600
 endif
 
 if v:version >= 700
-    " Indent-Object plugin
-    set runtimepath+=~/.vim/plugin-git/indent_object/
-
     " NERD Tree
-    set runtimepath+=~/.vim/plugin-git/nerdtree/
     let g:NERDTreeChDirMode = 2
     let g:NERDTreeHighlightCursorline = 0
     nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
 
     " NERD Commenter
-    set runtimepath+=~/.vim/plugin-git/nerdcommenter/
     let NERDCreateDefaultMappings = 0
     let NERDCommentWholeLinesInVMode = 1
     let NERDSpaceDelims = 1
     map <Leader>c <plug>NERDCommenterToggle
 
     " SnipMate
-    set runtimepath+=~/.vim/plugin-git/snipmate/
-    set runtimepath+=~/.vim/plugin-git/snipmate/after/
     let g:snips_author = 'Randy Morris'
     let g:snips_email = 'randy@rsontech.net'
     let g:snippets_dir = '.vim/snippets'
 
     " Super Tab
-    set runtimepath+=~/.vim/plugin-git/supertab/
     let g:SuperTabDefaultCompletionType = "context"
     let g:SuperTabMidWordCompletion = 0
 
     " Conque
     if has('python')
-        set runtimepath+=~/.vim/plugin-git/conque/
         autocmd filetype conque_term setlocal nolist
         let g:ConqueTerm_CWInsert = 1
 
@@ -263,9 +265,10 @@ if v:version >= 700
     endif
 
     " DelimitMate
-    set runtimepath+=~/.vim/plugin-git/delimitmate/
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_autoclose = 0
 endif
+
+"}}}
 
 " vim:foldlevel=0:foldmethod=marker
