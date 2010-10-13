@@ -3,15 +3,17 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-11 14:15
+" MODIFIED: 2010-10-13 06:33
 
-" Setup pathogen "{{{
+" Setup Pathogen "{{{
 try
-    " syntax is only supported by vim >= 700
+    " this throws an E107 error if not on vim 7,
+    " even with a version trap around it.  just 
+    " catch it and load vim 6 plugins later.
     call pathogen#runtime_append_all_bundles('plugin-git')
     filetype off
 catch /^Vim\%((\a\+)\)\=:E107/
-    " manually load plugins for vim < 700 later
+    " pass
 endtry
 "}}}
 
@@ -217,9 +219,9 @@ endfunction
 " Plugin Specific {{{
 
 if v:version >= 600
-    " Tag List
+    " Taglist
     if v:version < 700
-        " pathogen doesn't work with vim 6 but taglist does
+        " Pathogen doesn't work with vim 6 but Taglist does
         set rtp+=~/.vim/plugin-git/taglist
     endif
 
