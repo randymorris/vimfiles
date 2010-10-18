@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-13 06:33
+" MODIFIED: 2010-10-18 12:38
 
 " Setup Pathogen "{{{
 try
@@ -80,8 +80,8 @@ if has('gui')
 endif
 
 " Open help in a vsplit rather than a split
-command! -nargs=? -complete=help Help :vertical help <args>
-cabbr h Help
+command! -nargs=? -complete=help Help :vertical help <argse
+cabbrev h h<C-\>esubstitute(getcmdline(, '^h\>', 'Help', ')')
 "}}}
 
 " Color Settings "{{{
