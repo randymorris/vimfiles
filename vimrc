@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-18 12:38
+" MODIFIED: 2010-10-18 12:47
 
 " Setup Pathogen "{{{
 try
@@ -133,7 +133,7 @@ let mapleader=',' " Change leader to something easier to reach
 vmap <Leader>c :call CommentLines()<CR>
 
 " Quickly save a file as root
-cabbr w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
+cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
 " Modify display
 nmap <Leader>L :setlocal invlist<CR>
@@ -143,9 +143,9 @@ nmap <Leader>W :match todo /\%80v.\+/<CR>
 " Buffer Mappings
 if v:version >= 700
     for i in range(1,9,1)
-        exec "silent! noremap <Esc>".i." :b! ".i."<CR>"
-        exec "silent! noremap <Esc>s".i." :sb! ".i."<CR>"
-        exec "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>"
+        execute "silent! noremap <Esc>".i." :b! ".i."<CR>"
+        execute "silent! noremap <Esc>s".i." :sb! ".i."<CR>"
+        execute "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>"
     endfor
 endif
 "}}}
