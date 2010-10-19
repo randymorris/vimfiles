@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-18 23:00
+" MODIFIED: 2010-10-18 23:03
 
 " Setup Pathogen "{{{
 try
@@ -225,6 +225,7 @@ endfunction
 
 " Plugin Specific {{{
 
+" Vim 6 and above {{{
 if v:version >= 600
     " Taglist
     if v:version < 700
@@ -241,7 +242,9 @@ if v:version >= 600
     let g:Tlist_Enable_Fold_Column = 0
     nmap <Leader>T :TlistToggle<CR><C-w><C-w>
 endif
+" }}}
 
+" Vim 7 and above {{{
 if v:version >= 700
     " NERD Tree
     let g:NERDTreeChDirMode = 2
@@ -276,11 +279,14 @@ if v:version >= 700
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_autoclose = 0
 endif
+" }}}
 
+" Vim 7.3 and above {{{
 if v:version >= 703
     " Gundo
     nmap <Leader>U :GundoToggle<CR>
 endif
+"}}}
 
 "}}}
 
