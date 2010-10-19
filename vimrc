@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-18 12:47
+" MODIFIED: 2010-10-18 22:32
 
 " Setup Pathogen "{{{
 try
@@ -19,7 +19,9 @@ endtry
 
 " Simple Settings  {{{
 
-set nocompatible    " Enable vim features
+set nocompatible          " Enable vim features
+set backup                " Enable backup files
+set backupdir=~/.vim/tmp/ " Backup to a tmp dir
 
 " Allow backspace to remove indents, newlines and old text
 set backspace=indent,eol,start
@@ -77,6 +79,11 @@ endif
 if has('gui')
     set guioptions=
     set guifont=Monaco
+endif
+
+if has('persistent_undo')
+    set undofile            " Enable persistent undo
+    set undodir=~/.vim/tmp/ " Store undofiles in a tmp dir
 endif
 
 " Open help in a vsplit rather than a split
