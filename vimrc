@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-18 23:03
+" MODIFIED: 2010-10-20 06:57
 
 " Setup Pathogen "{{{
 try
@@ -101,7 +101,7 @@ else
     colorscheme darkdot
 endif
 
-if hostname() == 'vudu'
+if $WORK == 1
     source ~/.vimrc.work
 endif
 
