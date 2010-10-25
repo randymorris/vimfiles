@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-20 06:57
+" MODIFIED: 2010-10-25 13:14
 
 " Setup Pathogen "{{{
 try
@@ -87,8 +87,8 @@ if has('persistent_undo')
 endif
 
 " Open help in a vsplit rather than a split
-command! -nargs=? -complete=help Help :vertical help <argse
-cabbrev h h<C-\>esubstitute(getcmdline(, '^h\>', 'Help', ')')
+command! -nargs=? -complete=help Help :vertical help <args>
+cabbrev h h<C-\>esubstitute(getcmdline(), '^h\>', 'Help', '')
 "}}}
 
 " Color Settings "{{{
