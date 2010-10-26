@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-25 13:14
+" MODIFIED: 2010-10-26 13:44
 
 " Setup Pathogen "{{{
 try
@@ -89,6 +89,10 @@ endif
 " Open help in a vsplit rather than a split
 command! -nargs=? -complete=help Help :vertical help <args>
 cabbrev h h<C-\>esubstitute(getcmdline(), '^h\>', 'Help', '')
+
+if filereadable(expand('~/.vimrc_local'))
+    exec 'source ' . expand('~/.vimrc_local')
+endif
 "}}}
 
 " Color Settings "{{{
@@ -100,11 +104,6 @@ if $TERM =~ "256color" || has('gui_running')
 else
     colorscheme darkdot
 endif
-
-if $WORK == 1
-    source ~/.vimrc.work
-endif
-
 "}}}
 
 " Auto Commands "{{{
