@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-26 13:44
+" MODIFIED: 2010-10-29 10:36
 
 " Setup Pathogen "{{{
 try
@@ -284,6 +284,9 @@ endif
 if v:version >= 703
     " Gundo
     nmap <Leader>U :GundoToggle<CR>
+    let g:gundo_preview_bottom = 1
+    let g:gundo_preview_height = 10
+    let g:gundo_width = 30
 endif
 "}}}
 
