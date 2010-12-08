@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-12-08 08:51
+" MODIFIED: 2010-12-08 09:02
 
 " Setup Pathogen "{{{
 try
@@ -223,33 +223,8 @@ endfunction
 "}}}
 
 " Plugin Specific {{{
-
-" Vim 6 and above {{{
-if v:version >= 600
-    " Taglist
-    if v:version < 700
-        " Pathogen doesn't work with vim 6 but Taglist does
-        set rtp+=~/.vim/plugin-git/taglist
-    endif
-
-    let g:Tlist_GainFocus_On_ToggleOpen = 1
-    let g:Tlist_Show_Menu = 0
-    let g:Tlist_Sort_Type = 'order'
-    let g:Tlist_Use_Right_Window = 1
-    let g:Tlist_Inc_Winwidth = 0
-    let g:Tlist_Exit_OnlyWindow = 1
-    let g:Tlist_Enable_Fold_Column = 0
-    nmap <Leader>T :TlistToggle<CR><C-w><C-w>
-endif
-" }}}
-
 " Vim 7 and above {{{
 if v:version >= 700
-    " NERD Tree
-    let g:NERDTreeChDirMode = 2
-    let g:NERDTreeHighlightCursorline = 0
-    nmap <Leader>R :NERDTreeToggle<CR><C-w><C-w>
-
     " NERD Commenter
     let NERDCreateDefaultMappings = 0
     let NERDCommentWholeLinesInVMode = 1
@@ -263,20 +238,6 @@ if v:version >= 700
     " Super Tab
     let g:SuperTabDefaultCompletionType = "context"
     let g:SuperTabMidWordCompletion = 0
-
-    " Conque
-    if has('python')
-        autocmd filetype conque_term setlocal nolist
-        let g:ConqueTerm_CWInsert = 1
-
-        nmap <Leader>S :ConqueTerm zsh<CR>
-        nmap <Leader>s :ConqueTermSplit zsh<CR>
-        nmap <Leader>v :ConqueTermVSplit zsh<CR>
-    endif
-
-    " DelimitMate
-    let g:delimitMate_expand_cr = 1
-    let g:delimitMate_autoclose = 0
 endif
 " }}}
 
