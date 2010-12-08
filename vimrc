@@ -88,7 +88,7 @@ endif
 
 " Open help in a vsplit rather than a split
 command! -nargs=? -complete=help Help :vertical help <args>
-cabbrev h h<C-\>esubstitute(getcmdline(), '^h\>', 'Help', '')
+cabbrev h h<C-\>esubstitute(getcmdline(), '^h\>', 'Help', '')<CR>
 
 if filereadable(expand('~/.vimrc_local'))
     exec 'source ' . expand('~/.vimrc_local')
