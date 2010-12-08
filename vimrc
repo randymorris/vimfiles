@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-10-29 10:36
+" MODIFIED: 2010-12-08 08:51
 
 " Setup Pathogen "{{{
 try
@@ -40,7 +40,7 @@ set ruler           " Always show cursor position
 set laststatus=2    " Always show the status line
 set novisualbell    " Don't flash the screen
 set list            " Show non-printing characters by default
-set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,
+set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
 set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 " Show only spaces, not ugly bars
 set fillchars=
@@ -100,7 +100,7 @@ set background=dark
 
 " Set 256 color colorscheme if we can
 if $TERM =~ "256color" || has('gui_running')
-    colorscheme xoria256
+    colorscheme xoria256-mod
 else
     colorscheme darkdot
 endif
