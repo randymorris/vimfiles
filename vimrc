@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-12-08 09:02
+" MODIFIED: 2010-12-16 10:42
 
 " Setup Pathogen "{{{
 try
@@ -42,6 +42,7 @@ set novisualbell    " Don't flash the screen
 set list            " Show non-printing characters by default
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
 set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+
 " Show only spaces, not ugly bars
 set fillchars=
 
@@ -131,7 +132,11 @@ endif
 nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
-inoremap {}<CR> {<CR>}<C-o>O<TAB>
+
+" Lazy pair expansion
+inoremap {<CR> {<CR>}<C-o>O<TAB>
+inoremap [<CR> [<CR>]<C-o>O<TAB>
+inoremap (<CR> (<CR>)<C-o>O<TAB>
 
 let mapleader=',' " Change leader to something easier to reach
 
