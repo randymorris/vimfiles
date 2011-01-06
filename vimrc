@@ -133,6 +133,10 @@ nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
 
+" Alternate escape
+inoremap jj <Esc>
+cnoremap jj <Esc>
+
 " Lazy pair expansion
 inoremap {<CR> {<CR>}<C-o>O<TAB>
 inoremap [<CR> [<CR>]<C-o>O<TAB>
