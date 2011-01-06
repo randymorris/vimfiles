@@ -92,7 +92,7 @@ command! -nargs=? -complete=help Help :vertical help <args>
 cabbrev h h<C-\>esubstitute(getcmdline(), '^h\>', 'Help', '')<CR>
 
 if filereadable(expand('~/.vimrc_local'))
-    exec 'source ' . expand('~/.vimrc_local')
+    execute 'source ' . expand('~/.vimrc_local')
 endif
 "}}}
 
@@ -138,7 +138,8 @@ inoremap {<CR> {<CR>}<C-o>O<TAB>
 inoremap [<CR> [<CR>]<C-o>O<TAB>
 inoremap (<CR> (<CR>)<C-o>O<TAB>
 
-let mapleader=',' " Change leader to something easier to reach
+" Change leader to something easier to reach
+let mapleader=','
 
 " Comment conveniently
 vmap <Leader>c :call CommentLines()<CR>
@@ -228,6 +229,7 @@ endfunction
 "}}}
 
 " Plugin Specific {{{
+
 " Vim 7 and above {{{
 if v:version >= 700
     " NERD Commenter
