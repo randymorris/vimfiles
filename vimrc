@@ -159,9 +159,9 @@ nmap <Leader>W :match todo /\%80v.\+/<CR>
 " Buffer Mappings
 if v:version >= 700
     for i in range(1,9,1)
-        execute "silent! noremap <Esc>".i." :b! ".i."<CR>"
-        execute "silent! noremap <Esc>s".i." :sb! ".i."<CR>"
-        execute "silent! noremap <Esc>v".i." :vertical sb! ".i."<CR>"
+        execute "silent! noremap <Leader>".i." :buffer! ".i."<CR>"
+        execute "silent! noremap <Leader>s".i." :sbuffer! ".i."<CR>"
+        execute "silent! noremap <Leader>v".i." :vertical sbuffer! ".i."<CR>"
     endfor
 endif
 "}}}
