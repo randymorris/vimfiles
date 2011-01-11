@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2010-12-16 10:42
+" MODIFIED: 2011-01-11 06:50
 
 " Setup Pathogen "{{{
 try
@@ -136,6 +136,9 @@ nnoremap q? <Nop>
 " Alternate escape
 inoremap jj <Esc>
 cnoremap jj <Esc>
+
+" Select pasted text
+nnoremap gV `[v`]
 
 " Lazy pair expansion
 inoremap {<CR> {<CR>}<C-o>O<TAB>
