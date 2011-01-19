@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2011-01-11 06:50
+" MODIFIED: 2011-01-18 10:46
 
 " Setup Pathogen "{{{
 try
@@ -248,6 +248,7 @@ if v:version >= 700
     " SnipMate
     let g:snips_author = 'Randy Morris'
     let g:snips_email = 'randy@rsontech.net'
+    let g:snips_dir = '~/.vim/snippets/'
 
     " Super Tab
     let g:SuperTabDefaultCompletionType = "context"
