@@ -41,7 +41,7 @@ set laststatus=2    " Always show the status line
 set novisualbell    " Don't flash the screen
 set list            " Show non-printing characters by default
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
-set statusline=%=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+set statusline=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 
 " Show only spaces, not ugly bars
 set fillchars=
@@ -252,6 +252,13 @@ if v:version >= 700
     " Super Tab
     let g:SuperTabDefaultCompletionType = "context"
     let g:SuperTabMidWordCompletion = 0
+
+    " Bufstat
+    highlight BufferNC ctermfg=248 ctermbg=239
+    highlight link Buffer StatusLine
+    let g:bufstat_active_hl_group = 'Buffer'
+    let g:bufstat_inactive_hl_group = 'BufferNC'
+    let g:bufstat_debug = 1
 endif
 " }}}
 
