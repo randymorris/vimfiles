@@ -64,8 +64,8 @@ if v:version >= 700
     set completeopt-=menu " Get rid of the ugly menu
 endif
 
-filetype plugin on " Enable filetype detection
-syntax on          " Syntax highliting
+filetype plugin indent on " Enable filetype detection
+syntax on                 " Syntax highliting
 
 if has('folding')
     set foldenable         " Enable code folding
