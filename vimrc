@@ -3,18 +3,13 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2011-01-18 10:46
+" MODIFIED: 2011-01-25 12:55
 
 " Setup Pathogen "{{{
-try
-    " this throws an E107 error if not on vim 7,
-    " even with a version trap around it.  just 
-    " catch it and load vim 6 plugins later.
-    call pathogen#runtime_append_all_bundles()
-    filetype off
-catch /^Vim\%((\a\+)\)\=:E107/
-    " pass
-endtry
+" supress errors if < vim 7
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+filetype off
 "}}}
 
 " Simple Settings  {{{
