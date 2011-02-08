@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2011-01-25 12:55
+" MODIFIED: 2011-02-08 12:38
 
 " Setup Pathogen "{{{
 " supress errors if < vim 7
@@ -139,6 +139,14 @@ nnoremap gV `[v`]
 inoremap {<CR> {<CR>}<C-o>O<TAB>
 inoremap [<CR> [<CR>]<C-o>O<TAB>
 inoremap (<CR> (<CR>)<C-o>O<TAB>
+
+" Give me the option to quickly move in insert mode if need be.
+inoremap <C-a> <C-o>0
+inoremap <C-e> <C-o>$
+inoremap <C-b> <C-o>h
+inoremap <C-n> <C-o><C-n>
+inoremap <C-p> <C-o><C-p>
+inoremap <C-f> <C-o>l
 
 " Change leader to something easier to reach
 let mapleader=','
