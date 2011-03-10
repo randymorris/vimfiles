@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2011-02-08 12:38
+" MODIFIED: 2011-03-09 19:23
 
 " Setup Pathogen "{{{
 " supress errors if < vim 7
@@ -123,6 +123,9 @@ endif
 "}}}
 
 " Key Maps  "{{{
+" Change leader to something easier to reach
+let mapleader=','
+
 " Unmap annoying keys
 nnoremap q: <Nop>
 nnoremap q/ <Nop>
@@ -148,8 +151,11 @@ inoremap <C-n> <C-o><C-n>
 inoremap <C-p> <C-o><C-p>
 inoremap <C-f> <C-o>l
 
-" Change leader to something easier to reach
-let mapleader=','
+" Tmux integration
+nnoremap <silent> <C-w>h :call TmuxWindowMotion('h')<cr>
+nnoremap <silent> <C-w>j :call TmuxWindowMotion('j')<cr>
+nnoremap <silent> <C-w>k :call TmuxWindowMotion('k')<cr>
+nnoremap <silent> <C-w>l :call TmuxWindowMotion('l')<cr>
 
 " Comment conveniently
 vmap <Leader>c :call CommentLines()<CR>
@@ -234,6 +240,28 @@ function! OpenFoldOnRestore()
         endif
         unlet b:doopenfold
     endif
+endfunction
+
+" Tmux integration
+function TmuxWindowMotion(dir)
+    let dir = a:dir
+
+    let old_winnr = winnr()
+    execute "wincmd " . dir
+    if old_winnr != winnr()
+        return
+    endif
+
+    if dir == 'h'
+        let dir = '-L'
+    elseif dir == 'j'
+        let dir = '-D'
+    elseif dir == 'k'
+        let dir = '-U'
+    elseif dir == 'l'
+        let dir = '-R'
+    endif
+    call system('tmux select-pane ' . dir)
 endfunction
 
 "}}}
