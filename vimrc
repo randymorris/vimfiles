@@ -3,14 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2011-03-09 19:23
-
-" Setup Pathogen "{{{
-" supress errors if < vim 7
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
-filetype off
-"}}}
+" MODIFIED: 2011-03-23 17:30
 
 " Simple Settings  {{{
 
@@ -59,7 +52,6 @@ if v:version >= 700
     set completeopt-=menu " Get rid of the ugly menu
 endif
 
-filetype plugin indent on " Enable filetype detection
 syntax on                 " Syntax highliting
 
 if has('folding')
@@ -105,7 +97,7 @@ endif
 " Auto Commands "{{{
 if has('autocmd')
     " Set mutt settings
-    autocmd BufRead,BufNewFile /tmp/mutt-* set filetype=mail | set textwidth=72 | set spell | set wrap
+    autocmd BufRead,BufNewFile /tmp/mutt-* set ft=mail tw=72 spell wrap
 
     " Automatically add CREATED date and update MODIFIED date
     if v:version >= 700
@@ -114,7 +106,7 @@ if has('autocmd')
     endif
 
     " Explicitly set filetype on certain files
-    autocmd BufRead,BufNewFile *.jinja set filetype=htmljinja
+    autocmd BufRead,BufNewFile *.jinja set ft=htmljinja
 
     " Restore cursor position
     autocmd BufReadPost * call RestoreCursorPos()
@@ -243,7 +235,7 @@ function! OpenFoldOnRestore()
 endfunction
 
 " Tmux integration
-function TmuxWindowMotion(dir)
+function! TmuxWindowMotion(dir)
     let dir = a:dir
 
     let old_winnr = winnr()
@@ -270,22 +262,28 @@ endfunction
 
 " Vim 7 and above {{{
 if v:version >= 700
+    " Setup Vundle
+    filetype off
+    set runtimepath+=~/.vim/vundle/
+    call vundle#rc()
+
+    " Markdown syntax file
+    Bundle "tpope/vim-markdown"
+
     " NERD Commenter
+    Bundle "scrooloose/nerdcommenter"
     let NERDCreateDefaultMappings = 0
     let NERDCommentWholeLinesInVMode = 1
     let NERDSpaceDelims = 1
     map <Leader>c <plug>NERDCommenterToggle
 
-    " SnipMate
-    let g:snips_author = 'Randy Morris'
-    let g:snips_email = 'randy@rsontech.net'
-    let g:snips_dir = '~/.vim/snippets/'
-
     " Super Tab
+    Bundle "ervandew/supertab"
     let g:SuperTabDefaultCompletionType = "context"
     let g:SuperTabMidWordCompletion = 0
 
     " Bufstat
+    Bundle "rson/vim-bufstat"
     highlight BufferNC ctermfg=248 ctermbg=239
     highlight link Buffer StatusLine
     let g:bufstat_active_hl_group = 'Buffer'
@@ -297,6 +295,7 @@ endif
 " Vim 7.3 and above {{{
 if v:version >= 703
     " Gundo
+    Bundle "sjl/gundo.vim"
     nmap <Leader>U :GundoToggle<CR>
     let g:gundo_preview_bottom = 1
     let g:gundo_preview_height = 10
@@ -305,5 +304,8 @@ endif
 "}}}
 
 "}}}
+
+" End Vundle
+filetype plugin indent on
 
 " vim:foldlevel=0:foldmethod=marker
