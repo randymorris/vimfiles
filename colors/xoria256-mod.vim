@@ -1,4 +1,4 @@
-" Name:       xoria256.vim
+" Name:       xoria256-mod.vim
 " Version:    1.1
 " Maintainer:	Dmitriy Y. Zotikov (xio) <xio@ungrund.org>
 "
@@ -30,7 +30,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "xoria256"
+let colors_name = "xoria256-mod"
 
 
 
