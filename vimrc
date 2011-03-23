@@ -3,7 +3,7 @@
 " Randy Morris (rson451@gmail.com)
 "
 " CREATED:  2008-08-18 22:31
-" MODIFIED: 2011-03-23 17:30
+" MODIFIED: 2011-03-23 17:31
 
 " Simple Settings  {{{
 
@@ -269,6 +269,10 @@ if v:version >= 700
 
     " Markdown syntax file
     Bundle "tpope/vim-markdown"
+
+    " Ack
+    Bundle "mileszs/ack.vim"
+    cabbrev ack ack<C-\>esubstitute(getcmdline(), '^ack\>', 'Ack!', '')<CR>
 
     " NERD Commenter
     Bundle "scrooloose/nerdcommenter"
