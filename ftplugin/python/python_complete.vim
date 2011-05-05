@@ -1,1 +1,0 @@
-setlocal completefunc=pythoncomplete#Complete

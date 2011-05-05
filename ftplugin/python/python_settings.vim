@@ -1,20 +1,20 @@
-" Allow jumping to stdlib tags
-" Note: regenerate tags file with the following:
-"       ctags -R -f ~/.vim/tags/python.ctags /usr/lib/pythonX.X
-set tags+=$HOME/.vim/tags/python.ctags
+" Minified Configuration for vim
+" Randy Morris <randy.morris@archlinux.us>
 
-" Show line number in gvim only
-if has('gui_running')
-    set number
-    set numberwidth=1
-endif
+" Python settings
 
-setlocal expandtab
-setlocal shiftwidth=4
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal formatoptions+=croq
+setlocal completefunc=pythoncomplete#Complete
 
 let python_highlight_all=1
 let python_highlight_exceptions=1
 let python_highlight_builtins=1
+
+" Enable jumping to imports with gf
+python << EOF
+import os
+import sys
+import vim
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+EOF
