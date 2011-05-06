@@ -17,13 +17,14 @@ inoremap (<cr> (<cr>)<c-o>O<tab>
 "}}}
 
 "{{{ Normal
-nmap <leader>L :setl invlist<cr>
-nmap <leader>N :setl invnumber<cr>
-nmap <leader>W :mat TODO /\%80v.\+/<cr>
+nnoremap <leader>L :setlocal invlist<cr>
+nnoremap <leader>N :setlocal invnumber<cr>
+nnoremap <leader>W :match TODO /\%80v.\+/<cr>
 nnoremap gV `[v`]
 nnoremap q/ <nop>
 nnoremap q: <nop>
 nnoremap q? <nop>
+
 for i in [1,2,3,4,5,6,7,8,9]
     execute "silent! nnoremap <leader>".i." :buffer! ".i."<cr>"
     execute "silent! nnoremap <leader>s".i." :sbuffer! ".i."<cr>"
