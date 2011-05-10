@@ -33,6 +33,7 @@ endfor
 
 if &diff
     nnoremap du :wincmd w <bar> undo <bar> wincmd w <bar> diffupdate<cr>
+    nnoremap u :undo <bar> diffupdate<cr>
     nnoremap <space> :normal! ]c<cr>
     nnoremap <backspace> :normal! [c<cr>
 endif
