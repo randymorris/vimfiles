@@ -7,7 +7,7 @@
 filetype plugin indent on
 set autowrite
 set backspace=2
-set formatoptions=acornql
+set formatoptions=cornql
 set hidden
 set nosplitbelow
 set splitright
