@@ -37,7 +37,7 @@ let g:bufstat_active_hl_group = 'Buffer'
 let g:bufstat_inactive_hl_group = 'BufferNC'
 "}}}
 "{{{ NERD Commenter settings
-let NERDCreateDefaultMappings = 0"
+let NERDCreateDefaultMappings = 0
 let NERDCommentWholeLinesInVMode = 1
 let NERDSpaceDelims = 1
 map <leader>c <plug>NERDCommenterToggle
