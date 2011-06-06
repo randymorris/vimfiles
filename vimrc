@@ -49,6 +49,7 @@ silent! set ttymouse=xterm
 "}}}
 
 "{{{ General display
+set display+=lastline
 set fillchars=
 set laststatus=2
 set list
