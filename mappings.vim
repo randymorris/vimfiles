@@ -5,12 +5,8 @@
 
 let mapleader=','
 
-"{{{ Command-line
-cnoremap jj <esc>
-"}}}
-
 "{{{ Insert
-inoremap jj <esc>
+map! jj <esc>
 inoremap {<enter> {<enter>}<c-o>O
 inoremap [<enter> [<enter>]<c-o>O
 inoremap (<enter> (<enter>)<c-o>O
@@ -50,4 +46,14 @@ if &diff
     vnoremap p :diffput <bar> diffupdate<enter>
     vnoremap o :diffget <bar> diffupdate<enter>
 endif
+"}}}
+
+
+"{{{ Everywhere
+map <f1> <nop>
+lmap <f1> <nop>
+map <s-up> <nop>
+lmap <s-up> <nop>
+map <s-down> <nop>
+lmap <s-down> <nop>
 "}}}
