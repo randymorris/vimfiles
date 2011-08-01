@@ -22,6 +22,9 @@ nnoremap q/ <nop>
 nnoremap q: <nop>
 nnoremap q? <nop>
 
+nnoremap <leader>ff :e **/*<left>
+nnoremap <leader>fp :<c-p><left>
+
 nnoremap <silent> <C-w>h :call SwitchToWindow('h')<enter>
 nnoremap <silent> <C-w>j :call SwitchToWindow('j')<enter>
 nnoremap <silent> <C-w>k :call SwitchToWindow('k')<enter>
