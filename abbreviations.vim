@@ -3,5 +3,5 @@
 
 " Abbreviations
 
-cabbrev h h<c-\>esubstitute(getcmdline(), '^h\>', 'Help', '')<cr>
-cabbrev w!! w !sudo tee % > /dev/null<cr>:e!<cr><cr>
+cabbrev h h<c-\>esubstitute(getcmdline(), '^h\>', 'Help', '')<enter>
+cabbrev w!! w !sudo tee % > /dev/null<enter>:e!<enter><enter>

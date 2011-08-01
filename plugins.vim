@@ -28,7 +28,7 @@ Bundle "gmarik/vundle"
 "}}}
 
 "{{{ Ack settings
-cabbrev ack ack<c-\>esubstitute(getcmdline(), '^ack\>', 'Ack!', '')<cr>
+cabbrev ack ack<c-\>esubstitute(getcmdline(), '^ack\>', 'Ack!', '')<enter>
 "}}}
 "{{{ Bufstat settings
 highlight BufferNC ctermfg=248 ctermbg=239

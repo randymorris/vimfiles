@@ -11,42 +11,43 @@ cnoremap jj <esc>
 
 "{{{ Insert
 inoremap jj <esc>
-inoremap {<cr> {<cr>}<c-o>O<tab>
-inoremap [<cr> [<cr>]<c-o>O<tab>
-inoremap (<cr> (<cr>)<c-o>O<tab>
+inoremap {<enter> {<enter>}<c-o>O
+inoremap [<enter> [<enter>]<c-o>O
+inoremap (<enter> (<enter>)<c-o>O
 "}}}
 
 "{{{ Normal
-nnoremap <leader>L :setlocal invlist<cr>
-nnoremap <leader>N :setlocal invnumber<cr>
-nnoremap <leader>W :match TODO /\%80v.\+/<cr>
+nnoremap <leader>L :setlocal invlist<enter>
+nnoremap <leader>N :setlocal invnumber<enter>
+nnoremap <leader>W :match TODO /\%80v.\+/<enter>
 nnoremap gV `[v`]
+nnoremap K 0"_d$
 nnoremap q/ <nop>
 nnoremap q: <nop>
 nnoremap q? <nop>
 
-nnoremap <silent> <C-w>h :call SwitchToWindow('h')<cr>
-nnoremap <silent> <C-w>j :call SwitchToWindow('j')<cr>
-nnoremap <silent> <C-w>k :call SwitchToWindow('k')<cr>
-nnoremap <silent> <C-w>l :call SwitchToWindow('l')<cr>
+nnoremap <silent> <C-w>h :call SwitchToWindow('h')<enter>
+nnoremap <silent> <C-w>j :call SwitchToWindow('j')<enter>
+nnoremap <silent> <C-w>k :call SwitchToWindow('k')<enter>
+nnoremap <silent> <C-w>l :call SwitchToWindow('l')<enter>
 
 for i in [1,2,3,4,5,6,7,8,9]
-    execute "silent! nnoremap <leader>".i." :buffer! ".i."<cr>"
-    execute "silent! nnoremap <leader>s".i." :sbuffer! ".i."<cr>"
-    execute "silent! nnoremap <leader>v".i." :vertical sbuffer! ".i."<cr>"
+    execute "silent! nnoremap <leader>".i." :buffer! ".i."<enter>"
+    execute "silent! nnoremap <leader>s".i." :sbuffer! ".i."<enter>"
+    execute "silent! nnoremap <leader>v".i." :vertical sbuffer! ".i."<enter>"
 endfor
 
 if &diff
-    nnoremap du :wincmd w <bar> undo <bar> wincmd w <bar> diffupdate<cr>
-    nnoremap u :undo <bar> diffupdate<cr>
-    nnoremap <space> :normal! ]c<cr>
-    nnoremap <backspace> :normal! [c<cr>
+    nnoremap du :wincmd w <bar> undo <bar> wincmd w <bar> diffupdate<enter>
+    nnoremap u :undo <bar> diffupdate<enter>
+    nnoremap <space> :normal! ]c<enter>
+    nnoremap <backspace> :normal! [c<enter>
 endif
 "}}}
 
 "{{{ Visual
 if &diff
-    vnoremap p :diffput <bar> diffupdate<cr>
-    vnoremap o :diffget <bar> diffupdate<cr>
+    vnoremap p :diffput <bar> diffupdate<enter>
+    vnoremap o :diffget <bar> diffupdate<enter>
 endif
 "}}}
