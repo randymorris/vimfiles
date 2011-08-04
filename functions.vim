@@ -28,29 +28,3 @@ function! RestoreCursorPos() "{{{
     endif
 endfunction
 "}}}
-
-"{{{ Used for tmux integration
-"
-" Allows window motion commands to break out of vim and move to an
-" adjacent tmux pane.
-function! SwitchToWindow(direction)
-    let old_winnr = winnr()
-    execute "wincmd " . a:direction
-
-    if old_winnr != winnr() || expand("$TMUX") == "$TMUX"
-        return
-    endif
-
-    if a:direction == "h"
-        let arg = "L"
-    elseif a:direction == "j"
-        let arg = "D"
-    elseif a:direction == "k"
-        let arg = "U"
-    elseif a:direction == "l"
-        let arg = "R"
-    endif
-
-    call system("tmux select-pane -" . arg)
-endfunction
-"}}}

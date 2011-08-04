@@ -25,11 +25,6 @@ nnoremap q? <nop>
 nnoremap <leader>ff :e **/*<left>
 nnoremap <leader>fp :<c-p><left>
 
-nnoremap <silent> <C-w>h :call SwitchToWindow('h')<enter>
-nnoremap <silent> <C-w>j :call SwitchToWindow('j')<enter>
-nnoremap <silent> <C-w>k :call SwitchToWindow('k')<enter>
-nnoremap <silent> <C-w>l :call SwitchToWindow('l')<enter>
-
 for i in [1,2,3,4,5,6,7,8,9]
     execute "silent! nnoremap <leader>".i." :buffer! ".i."<enter>"
     execute "silent! nnoremap <leader>s".i." :sbuffer! ".i."<enter>"
