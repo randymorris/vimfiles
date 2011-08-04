@@ -5,6 +5,15 @@
 
 let mapleader=','
 
+"{{{ Command Line
+cnoremap <enter> <c-\>eCommandLineSubstitute()<enter><enter>
+let g:command_line_substitutes = [
+    \ ['^ee \(.\+\)', 'e **/\1*'],
+    \ ['^ack ', 'Ack! '],
+    \ ['^h ', 'vertical help '],
+\]
+"}}}
+
 "{{{ Insert
 map! jj <esc>
 inoremap {<enter> {<enter>}<c-o>O
@@ -21,9 +30,6 @@ nnoremap K 0"_d$
 nnoremap q/ <nop>
 nnoremap q: <nop>
 nnoremap q? <nop>
-
-nnoremap <leader>ff :e **/*<left>
-nnoremap <leader>fp :<c-p><left>
 
 for i in [1,2,3,4,5,6,7,8,9]
     execute "silent! nnoremap <leader>".i." :buffer! ".i."<enter>"
