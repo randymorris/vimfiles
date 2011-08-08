@@ -20,10 +20,11 @@ call vundle#rc()
 "{{{ Bundles
 Bundle "mileszs/ack.vim"
 Bundle "rson/vim-bufstat"
-Bundle "Raimondi/delimitMate"
 Bundle "tpope/vim-endwise"
 Bundle "tpope/vim-markdown"
 Bundle "scrooloose/nerdcommenter"
+Bundle "bingaman/vim-sparkup"
+Bundle "tpope/vim-surround"
 Bundle "gmarik/vundle"
 "}}}
 
