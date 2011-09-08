@@ -11,6 +11,7 @@ set formatoptions=cornql
 set hidden
 set nosplitbelow
 set splitright
+set suffixes+=.pyc
 "}}}
 
 "{{{ Folding
@@ -59,8 +60,10 @@ set nowrap
 set showbreak=↳\ 
 set showmatch
 set statusline=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
-silent! set completeopt-=menu
 silent! set numberwidth=1
+set wildmenu
+set wildmode=longest,full
+set completeopt=longest,menu
 "}}}
 
 "{{{ Colors
@@ -75,7 +78,6 @@ syntax on
 
 silent! runtime abbreviations.vim
 silent! runtime autocmds.vim
-silent! runtime commands.vim
 silent! runtime functions.vim
 silent! runtime mappings.vim
 silent! runtime plugins.vim
