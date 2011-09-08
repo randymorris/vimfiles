@@ -3,7 +3,7 @@
 "
 " Keybinds
 
-let mapleader=','
+let mapleader='\'
 
 "{{{ Command Line
 cnoremap <enter> <c-\>eCommandLineSubstitute()<enter><enter>
