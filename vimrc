@@ -62,6 +62,7 @@ set showmatch
 set statusline=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 silent! set numberwidth=1
 set wildmenu
+set wildignore=*.pyc
 set wildmode=longest,full
 set completeopt=longest,menu
 "}}}
