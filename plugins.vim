@@ -48,8 +48,8 @@ map <leader>c <plug>NERDCommenterToggle
 "{{{2 CtrlP settings
 let g:ctrlp_map = '-'
 let g:ctrlp_use_caching = 1
-let g:ctrlp_mru_files = 0
 let g:ctrlp_persistent_input = 0
+let g:ctrlp_cache_dir = $HOME . "/.vim/tmp"
 "}}}
 
 filetype plugin indent on
