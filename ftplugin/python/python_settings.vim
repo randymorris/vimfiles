@@ -5,9 +5,12 @@
 
 setlocal completefunc=pythoncomplete#Complete
 
-let python_highlight_all=1
+" let python_highlight_all=1
 let python_highlight_exceptions=1
 let python_highlight_builtins=1
+let pyindent_open_paren = '&sw'
+let pyindent_nested_paren = '&sw'
+let pyindent_continue = '&sw'
 
 " Enable jumping to imports with gf
 python << EOF
