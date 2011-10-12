@@ -35,6 +35,7 @@ for i in [1,2,3,4,5,6,7,8,9]
     execute "silent! nnoremap <leader>".i." :buffer! ".i."<enter>"
     execute "silent! nnoremap <leader>s".i." :sbuffer! ".i."<enter>"
     execute "silent! nnoremap <leader>v".i." :vertical sbuffer! ".i."<enter>"
+    execute "silent! nnoremap <leader>z".i." :set foldlevel=".i."<enter>"
 endfor
 
 if &diff
