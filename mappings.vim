@@ -22,9 +22,9 @@ inoremap (<enter> (<enter>)<c-o>O
 "}}}
 
 "{{{ Normal
-nnoremap <leader>L :setlocal invlist<enter>
-nnoremap <leader>N :setlocal invnumber<enter>
 nnoremap <leader>W :match TODO /\%80v.\+/<enter>
+nnoremap <silent> <leader>L :setlocal invlist<enter>
+nnoremap <silent> <leader>N :setlocal invnumber<enter>
 nnoremap gV `[v`]
 nnoremap K 0"_d$
 nnoremap q/ <nop>
