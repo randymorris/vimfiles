@@ -22,7 +22,6 @@ inoremap (<enter> (<enter>)<c-o>O
 "}}}
 
 "{{{ Normal
-nnoremap <leader>W :match TODO /\%80v.\+/<enter>
 nnoremap <silent> <leader>L :setlocal invlist<enter>
 nnoremap <silent> <leader>N :setlocal invnumber<enter>
 nnoremap <silent> <leader>R :setlocal invrelativenumber<enter>
@@ -32,6 +31,14 @@ nnoremap q/ <nop>
 nnoremap q: <nop>
 nnoremap q? <nop>
 nnoremap <silent> <c-l> :nohlsearch <bar> redraw<enter>
+
+if exists("+colorcolumn")
+    nnoremap <silent> <leader>w :setlocal colorcolumn=81<enter>
+    nnoremap <silent> <leader>W :setlocal colorcolumn=<enter>
+else
+    nnoremap <silent> <leader>w :match Error /\%81v.\+/<enter>
+    nnoremap <silent> <leader>W :call clearmatches()<enter>
+endif
 
 for i in [1,2,3,4,5,6,7,8,9]
     execute "silent! nnoremap <leader>".i." :buffer! ".i."<enter>"
