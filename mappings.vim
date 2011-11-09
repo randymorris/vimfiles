@@ -31,6 +31,7 @@ nnoremap K 0"_d$
 nnoremap q/ <nop>
 nnoremap q: <nop>
 nnoremap q? <nop>
+nnoremap <silent> <c-l> :nohlsearch <bar> redraw<enter>
 
 for i in [1,2,3,4,5,6,7,8,9]
     execute "silent! nnoremap <leader>".i." :buffer! ".i."<enter>"
