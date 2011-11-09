@@ -39,6 +39,7 @@ let colors_name = "xoria256-mod"
 "" General colors
 hi Normal       ctermfg=251 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
 hi CursorColumn                           ctermbg=238 guibg=#444444
+hi ColorColumn                            ctermbg=235 guibg=#333333
 hi Cursor                                 ctermbg=214 guibg=#ffaf00
 hi CursorLine   cterm=none  term=none     ctermbg=238 guibg=#444444
 hi FoldColumn   ctermfg=248 guifg=#a8a8a8 ctermbg=bg  guibg=bg
