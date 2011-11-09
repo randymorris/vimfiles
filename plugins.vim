@@ -22,6 +22,7 @@ Bundle "mileszs/ack.vim"
 Bundle "rson/vim-bufstat"
 Bundle "kien/ctrlp.vim"
 Bundle "tpope/vim-endwise"
+Bundle "mattn/gist-vim"
 Bundle "AndrewRadev/linediff.vim"
 Bundle "tpope/vim-markdown"
 Bundle "scrooloose/nerdcommenter"
@@ -37,6 +38,10 @@ highlight link Buffer StatusLine
 let g:bufstat_active_hl_group = 'Buffer'
 let g:bufstat_inactive_hl_group = 'BufferNC'
 let g:bufstat_prevent_mappings = 1
+"}}}
+"{{{2 Gist settings
+let g:gist_private = 1
+let g:gist_detect_filetype = 1
 "}}}
 "{{{2 NERD Commenter settings
 let NERDCreateDefaultMappings = 0
