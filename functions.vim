@@ -37,7 +37,7 @@ endfunction
 " executing it.
 function! CommandLineSubstitute()
     let cl = getcmdline()
-    if exists('g:command_line_substitutes')
+    if exists('g:command_line_substitutes') && getcmdtype() == ':'
         for [k, v] in g:command_line_substitutes
             if match(cl, k) == 0
                 let cl = substitute(cl, k, v, "")
