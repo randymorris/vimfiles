@@ -25,6 +25,7 @@ inoremap (<enter> (<enter>)<c-o>O
 nnoremap <leader>W :match TODO /\%80v.\+/<enter>
 nnoremap <silent> <leader>L :setlocal invlist<enter>
 nnoremap <silent> <leader>N :setlocal invnumber<enter>
+nnoremap <silent> <leader>R :setlocal invrelativenumber<enter>
 nnoremap gV `[v`]
 nnoremap K 0"_d$
 nnoremap q/ <nop>
