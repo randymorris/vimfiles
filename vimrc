@@ -52,9 +52,10 @@ silent! set ttymouse=xterm
 "{{{ General display
 set display+=lastline
 set fillchars=
+set hlsearch
 set laststatus=2
-set list
 set listchars=tab:⇥\ ,trail:·,extends:→,precedes:←,eol:↲
+set nolist
 set novisualbell
 set nowrap
 set showbreak=↳\ 
