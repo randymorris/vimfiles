@@ -52,13 +52,3 @@ if &diff
     vnoremap o :diffget <bar> diffupdate<enter>
 endif
 "}}}
-
-
-"{{{ Everywhere
-map <f1> <nop>
-lmap <f1> <nop>
-map <s-up> <nop>
-lmap <s-up> <nop>
-map <s-down> <nop>
-lmap <s-down> <nop>
-"}}}
