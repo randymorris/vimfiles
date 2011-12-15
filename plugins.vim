@@ -55,6 +55,8 @@ let g:ctrlp_map = '-'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_persistent_input = 0
 let g:ctrlp_cache_dir = $HOME . "/.vim/tmp"
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_clear_cache_on_exit = 0
 "}}}
 
 filetype plugin indent on
