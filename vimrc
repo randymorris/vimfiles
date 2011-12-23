@@ -9,6 +9,7 @@ set autowrite
 set backspace=2
 set formatoptions=cornql
 set hidden
+set modeline
 set nosplitbelow
 set splitright
 set suffixes+=.pyc
